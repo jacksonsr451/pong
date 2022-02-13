@@ -8,10 +8,12 @@ class Racket1:
         self.posY = 180
         self.width = 10
         self.height = 40
+        self.racket = None
 
     def draw(self, screen, speed, up: bool = False, down: bool = False):
+        self.racket = self.pg.Rect(self.get_position())
+        self.pg.draw.rect(screen, (255, 255, 255), self.racket)
         self.__set_pos_y(screen=screen, speed=speed, up=up, down=down)
-        self.pg.draw.rect(screen, (255, 255, 255), (self.posX, self.posY, self.width, self.height))
 
     def __set_pos_y(self, screen, speed, up: bool = False, down: bool = False):
         x, y = screen.get_size()
@@ -21,3 +23,10 @@ class Racket1:
         if self.posY < y - 40:
             if down:
                 self.posY += speed
+
+    def get_position(self):
+        position = (self.posX, self.posY, self.width, self.height)
+        return position
+
+    def get_racket(self):
+        return self.racket
