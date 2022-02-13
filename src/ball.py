@@ -24,12 +24,16 @@ class Ball:
 
     def __check_collisions(self, racket_1, racket_2):
         if self.position_x > 582 or self.position_x < 18:
+            self.pg.mixer.music.load("data/point_sound.wav")
+            self.pg.mixer.music.play()
             self.__set_points()
             self.position_x = 300
             self.position_y = randint(100, 300)
         elif self.position_y > 394 or self.position_y < 4:
             self.move_y *= -1
         elif self.ball.colliderect(racket_1) or self.ball.colliderect(racket_2):
+            self.pg.mixer.music.load("data/jump_sound.wav")
+            self.pg.mixer.music.play()
             self.move_x *= -1
 
     def __set_points(self):
