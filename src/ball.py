@@ -11,7 +11,7 @@ class Ball:
         self.move_x = speed
         self.move_y = speed * .3
         self.ball = None
-        self.points = {
+        self.score = {
             "player": 0,
             "computer": 0
         }
@@ -23,7 +23,7 @@ class Ball:
         self.__move()
 
     def __check_collisions(self, racket_1, racket_2):
-        if self.position_x > 598 or self.position_x < 2:
+        if self.position_x > 582 or self.position_x < 18:
             self.__set_points()
             self.position_x = 300
             self.position_y = randint(100, 300)
@@ -34,9 +34,9 @@ class Ball:
 
     def __set_points(self):
         if self.position_x > 598:
-            self.points['player'] += 1
+            self.score['player'] += 1
         else:
-            self.points['computer'] += 1
+            self.score['computer'] += 1
 
     def __move(self):
         self.position_x += self.move_x
@@ -50,5 +50,5 @@ class Ball:
         position = (self.position_x, self.position_y)
         return position
 
-    def get_points(self):
-        return self.points
+    def get_score(self):
+        return self.score
