@@ -24,7 +24,7 @@ class Pong:
         pygame.display.set_caption("Recreate a Pong Game")
 
         self.racket1 = Racket1(pg=pygame)
-        self.racket2 = Racket2(pg=pygame)
+        self.racket2 = Racket2(pg=pygame, speed=self.speed)
         self.ball = Ball(pg=pygame, speed=self.speed)
         self.background = Background(pg=pygame)
 
@@ -35,8 +35,11 @@ class Pong:
 
             self.racket1.draw(screen=screen, speed=self.speed, up=self.controller.get_racket_up(),
                               down=self.controller.get_racket_down())
-            self.racket2.draw(screen=screen)
+
+            self.racket2.draw(screen=screen, position=self.ball.get_position())
+
             self.ball.draw(screen=screen, racket_1=self.racket1.get_racket(), racket_2=self.racket2.get_racket())
+
             self.background.draw(screen=screen)
 
             pygame.display.update()

@@ -1,3 +1,5 @@
+from random import randint
+
 import pygame
 
 
@@ -22,11 +24,19 @@ class Ball:
 
     def __check_collisions(self, racket_1, racket_2):
         if self.position_x > 598 or self.position_x < 2:
-            self.move_x *= -1
-        if self.position_y > 394 or self.position_y < 4:
+            self.__set_points()
+            self.position_x = 300
+            self.position_y = randint(100, 300)
+        elif self.position_y > 394 or self.position_y < 4:
             self.move_y *= -1
-        if self.ball.colliderect(racket_1) or self.ball.colliderect(racket_2):
+        elif self.ball.colliderect(racket_1) or self.ball.colliderect(racket_2):
             self.move_x *= -1
+
+    def __set_points(self):
+        if self.position_x > 598:
+            self.points['player'] += 1
+        else:
+            self.points['computer'] += 1
 
     def __move(self):
         self.position_x += self.move_x
@@ -35,6 +45,10 @@ class Ball:
     def __get_direction(self):
         direction = (self.position_x, self.position_y, 5, 5)
         return direction
+
+    def get_position(self):
+        position = (self.position_x, self.position_y)
+        return position
 
     def get_points(self):
         return self.points
