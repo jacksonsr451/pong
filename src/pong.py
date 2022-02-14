@@ -27,6 +27,8 @@ class Pong:
         screen = pygame.display.set_mode((WIDTH, RIGHT))
         pygame.display.set_caption("Recreate a Pong Game")
 
+        self.keys = None
+
         self.racket1 = Racket1(pg=pygame)
         self.racket2 = Racket2(pg=pygame, speed=self.speed)
         self.ball = Ball(pg=pygame, speed=self.speed)
@@ -37,9 +39,9 @@ class Pong:
             screen.fill((0, 0, 0))
 
             self.controller.init()
+            self.keys = pygame.key.get_pressed()
 
-            self.racket1.draw(screen=screen, speed=self.speed, up=self.controller.get_racket_up(),
-                              down=self.controller.get_racket_down())
+            self.racket1.draw(screen=screen, speed=self.speed, keys=self.keys)
 
             self.racket2.draw(screen=screen, position=self.ball.get_position())
 
