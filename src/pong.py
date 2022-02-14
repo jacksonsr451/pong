@@ -15,14 +15,14 @@ class Pong:
     def __init__(self):
         pygame.init()
         clock = pygame.time.Clock()
-        clock.tick(30)
+        clock.tick(10)
 
         self.my_score = ""
         self.computer_score = ""
 
         self.controller = Controller(pg=pygame)
 
-        self.speed = .1
+        self.speed = .08
 
         screen = pygame.display.set_mode((WIDTH, RIGHT))
         pygame.display.set_caption("Recreate a Pong Game")

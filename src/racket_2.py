@@ -23,14 +23,14 @@ class Racket2:
         x, y = screen.get_size()
         if self.ball_x > 299:
             if (self.posY > 0) and (self.posY > self.ball_y):
-                self.posY -= self.move
+                self.posY -= self.move / 2
             elif (self.move < (y - 40)) and (self.posY < self.ball_y):
-                self.posY += self.move
+                self.posY += self.move / 2
         else:
             if self.posY > 180:
-                self.posY -= self.move
+                self.posY -= self.move / 2
             elif self.posY < 220:
-                self.posY += self.move
+                self.posY += self.move / 2
 
     def get_position(self):
         position = (self.posX, self.posY, self.width, self.height)

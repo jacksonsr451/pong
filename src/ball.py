@@ -37,9 +37,9 @@ class Ball:
             self.move_x *= -1
 
     def __set_points(self):
-        if self.position_x > 598:
+        if self.position_x > 582:
             self.score['player'] += 1
-        else:
+        elif self.position_x < 18:
             self.score['computer'] += 1
 
     def __move(self):
